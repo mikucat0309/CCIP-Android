@@ -1,17 +1,12 @@
-buildscript {
-    repositories {
-        maven { url 'https://plugins.gradle.org/m2/' }
-    }
-    dependencies {
-        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.8, 0.99.99]'
-    }
+plugins {
+    id 'kotlin-android'
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
 }
-apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 repositories {
-    maven { url 'https://maven.google.com' }
+    google()
     mavenCentral()
 }
 
@@ -33,9 +28,6 @@ android {
     }
 
     buildTypes {
-        debug {
-        }
-
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -100,5 +92,3 @@ dependencies {
 
     implementation 'me.saket:better-link-movement-method:2.2.0'
 }
-
-apply plugin: 'com.google.gms.google-services'
